@@ -1,6 +1,6 @@
 FROM docker.io/junshenxu/nesvor:v0.4.0
 
-WORKDIR /usr/local/src/app
+WORKDIR /usr/local/src/
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
