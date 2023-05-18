@@ -8,6 +8,7 @@ import torch
 from nesvor.utils import set_seed, setup_logger
 from nesvor.cli.commands import Reconstruct
 from nesvor.cli.formatters import Formatter
+from nesvor.cli.docs import RST
 from nesvor.cli.parsers import (
     build_parser_inputs,
     build_parser_outputs,
@@ -51,6 +52,12 @@ parser.add_argument(
     version=f"wrapper version: {__version__}; NeSVoR version: {nesvor.__version__}",
 )
 
+for a in parser._actions:
+    if hasattr(a, 'help') and isinstance(a.help, RST):
+        a.help = str(a.help)
+    if a.dest == 'milestones':
+        a.default= None
+
 def join_path(options, dir_path, keys):
     for k in keys:
         old_value = getattr(options, k, None)
@@ -92,6 +99,8 @@ def main(options: Namespace, inputdir: Path, outputdir: Path):
 
     options.input_slices = None
     options.output_model = None
+    if options.milestones is None:
+        options.milestones = [0.5, 0.75, 0.9]
 
     # execute command
     Reconstruct(options).main()
