@@ -20,17 +20,17 @@ def get_version(rel_path: str) -> str:
 
 setup(
     name='pl-nesvor',
-    version=get_version('app.py'),
-    description='This ChRIS plugin is a wrapper of NeSVoR',
+    version=get_version('nesvor_wrapper.py'),
+    description='GPU-accelerated slice-to-volume reconstruction for fetal brain MRI',
     author='Junshen Xu',
     author_email='junshen@mit.edu',
-    url='https://github.com/daviddmc/pl-nesvor',
-    py_modules=['app'],
-    install_requires=['chris_plugin'],
+    url='https://github.com/FNNDSC/pl-NeSVoR',
+    py_modules=['nesvor_wrapper'],
+    install_requires=['chris_plugin==0.2.0'],
     license='MIT',
     entry_points={
         'console_scripts': [
-            'nesvor_reconstruct = app:main'
+            'nesvor_reconstruct = nesvor_wrapper:main'
         ]
     },
     classifiers=[

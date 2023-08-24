@@ -1,3 +1,10 @@
+Dockerfile
+.dockerignore
+.gitignore
+.git
+README.md
+LICENSE
+
 *.nii
 test.sh
 

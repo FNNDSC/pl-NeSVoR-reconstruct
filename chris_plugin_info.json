@@ -1,0 +1,71 @@
+{
+  "name": "pl-NeSVoR-reconstruct",
+  "version": "0.5.0",
+  "public_repo": "https://github.com/FNNDSC/pl-NeSVoR-reconstruct",
+  "dock_image": "docker.io/fnndsc/pl-nesvor-reconstruct:0.5.0",
+  "type": "ds",
+  "parameters": [
+    {
+      "name": "input_stacks_pattern",
+      "type": "str",
+      "optional": true,
+      "flag": "--input-stacks-pattern",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "input stacks file glob",
+      "default": "**/*.nii",
+      "ui_exposed": true
+    },
+    {
+      "name": "output_volume",
+      "type": "str",
+      "optional": true,
+      "flag": "--output-volume",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output volume file name",
+      "default": "recon.nii",
+      "ui_exposed": true
+    },
+    {
+      "name": "output_resolution",
+      "type": "float",
+      "optional": true,
+      "flag": "--output-resolution",
+      "short_flag": "--output-resolution",
+      "action": "store",
+      "help": "output volume resolution",
+      "default": 0.75,
+      "ui_exposed": true
+    },
+    {
+      "name": "svort_version",
+      "type": "str",
+      "optional": true,
+      "flag": "--svort-version",
+      "short_flag": "--svort-version",
+      "action": "store",
+      "help": "Version of SVoRT model",
+      "default": "v2",
+      "ui_exposed": true
+    }
+  ],
+  "icon": "",
+  "authors": "Junshen Xu <junshen@mit.edu>",
+  "title": "NeSVoR",
+  "category": "Reconstruction",
+  "description": "GPU-accelerated slice-to-volume reconstruction for fetal brain MRI",
+  "documentation": "https://github.com/FNNDSC/pl-NeSVoR",
+  "license": "MIT",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "nesvor_reconstruct",
+  "execshell": "/opt/conda/bin/python3.10",
+  "min_number_of_workers": 1,
+  "max_number_of_workers": 1,
+  "min_memory_limit": "12Gi",
+  "max_memory_limit": "",
+  "min_cpu_limit": "4000m",
+  "max_cpu_limit": "",
+  "min_gpu_limit": 1,
+  "max_gpu_limit": 2
+}
